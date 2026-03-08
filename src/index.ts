@@ -1,8 +1,4 @@
-import {
-	InvalidOptionsError,
-	MapLoadError,
-	NotImplementedError,
-} from "./errors";
+import { InvalidOptionsError, MapLoadError } from "./errors";
 import { loadGoogleMapsApi } from "./loader";
 
 import type {
@@ -42,5 +38,42 @@ export async function createMapPinPicker(
 		draggable: true,
 	});
 
-	throw new NotImplementedError();
+	let currentValue: MapPinPickerValue | null = null;
+
+	function handlePositionChange(latLng: google.maps.LatLng) {
+		const lat = latLng.lat();
+		const lng = latLng.lng();
+		const googleMapsUrl = buildGoogleMapsUrl(lat, lng);
+
+		currentValue = { lat, lng, googleMapsUrl };
+		options.onChange?.(currentValue);
+	}
+
+	map.addListener("click", (event: google.maps.MapMouseEvent) => {
+		if (!event.latLng) return;
+		marker.setPosition(event.latLng);
+		handlePositionChange(event.latLng);
+	});
+
+	marker.addListener("dragend", (event: google.maps.MapMouseEvent) => {
+		if (!event.latLng) return;
+		handlePositionChange(event.latLng);
+	});
+
+	return {
+		getValue: () => currentValue,
+
+		setValue: (lat: number, lng: number) => {
+			const latLng = new google.maps.LatLng(lat, lng);
+			marker.setPosition(latLng);
+			map.panTo(latLng);
+			handlePositionChange(latLng);
+		},
+
+		destroy: () => {
+			marker.setMap(null);
+			google.maps.event.clearInstanceListeners(map);
+			google.maps.event.clearInstanceListeners(marker);
+		},
+	};
 }
