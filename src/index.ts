@@ -12,6 +12,7 @@ import type {
 } from "./types";
 import { buildGoogleMapsUrl } from "./utils";
 import { validateOptions } from "./validator";
+import { geocodeAddress } from "./geocoder";
 
 export type {
 	CreateMapPinPickerOptions,
@@ -26,6 +27,19 @@ export async function createMapPinPicker(
 ): Promise<MapPinPickerInstance> {
 	validateOptions(options);
 	await loadGoogleMapsApi(options.apiKey);
+
+	const coords = await geocodeAddress(options.address);
+
+	const map = new google.maps.Map(options.container, {
+		center: coords,
+		zoom: options.zoom ?? 17,
+	});
+
+	const marker = new google.maps.Marker({
+		position: coords,
+		map,
+		draggable: true,
+	});
 
 	throw new NotImplementedError();
 }
