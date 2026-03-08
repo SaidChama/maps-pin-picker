@@ -1,43 +1,46 @@
 {
-  "name": "maps-pin-picker",
-  "version": "0.1.0",
-  "description": "Lightweight JavaScript library to pick a location on a map and generate latitude, longitude and a shareable Google Maps link.",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "prepublishOnly": "npm run build",
-    "lint:prettier:check": "prettier --check .",
-    "lint:prettier:fix": "prettier --write .",
-    "lint:eslint:check": "eslint ."
-  },
-  "keywords": [
-    "maps",
-    "google-maps",
-    "pin-picker",
-    "location-picker",
-    "coordinates",
-    "latitude",
-    "longitude"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.0.3",
-    "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1"
-  }
+	"name": "maps-pin-picker",
+	"version": "0.1.0",
+	"description": "Lightweight JavaScript library to pick a location on a map and generate latitude, longitude and a shareable Google Maps link.",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"prepublishOnly": "npm run build",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"lint:prettier:check": "prettier --check .",
+		"lint:prettier:fix": "prettier --write .",
+		"lint:eslint:check": "eslint ."
+	},
+	"keywords": [
+		"maps",
+		"google-maps",
+		"pin-picker",
+		"location-picker",
+		"coordinates",
+		"latitude",
+		"longitude"
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"eslint": "^10.0.3",
+		"eslint-config-prettier": "^10.1.8",
+		"prettier": "^3.8.1",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.56.1",
+		"vitest": "^4.0.18"
+	}
 }
