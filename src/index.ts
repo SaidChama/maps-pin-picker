@@ -24,7 +24,10 @@ export async function createMapPinPicker(
 	validateOptions(options);
 	await loadGoogleMapsApi(options.apiKey);
 
-	const coords = await geocodeAddress(options.address);
+	const coords =
+		options.initialLat !== undefined && options.initialLng !== undefined
+			? { lat: options.initialLat, lng: options.initialLng }
+			: await geocodeAddress(options.address);
 
 	const map = new google.maps.Map(options.container, {
 		center: coords,
