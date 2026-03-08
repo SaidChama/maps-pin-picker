@@ -3,6 +3,7 @@ import {
 	MapLoadError,
 	NotImplementedError,
 } from "./errors";
+import { loadGoogleMapsApi } from "./loader";
 
 import type {
 	CreateMapPinPickerOptions,
@@ -24,6 +25,7 @@ export async function createMapPinPicker(
 	options: CreateMapPinPickerOptions,
 ): Promise<MapPinPickerInstance> {
 	validateOptions(options);
+	await loadGoogleMapsApi(options.apiKey);
 
 	throw new NotImplementedError();
 }

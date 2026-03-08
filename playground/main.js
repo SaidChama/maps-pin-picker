@@ -1,4 +1,5 @@
-import { createMapPinPicker, buildGoogleMapsUrl } from "../dist/index.js";
+// playground/main.js
+import { createMapPinPicker, buildGoogleMapsUrl } from "../src/index.ts";
 
 const mapElement = document.getElementById("map");
 const statusElement = document.getElementById("status");
