@@ -42,7 +42,7 @@ async function runPicker() {
 
 	try {
 		const instance = await createMapPinPicker({
-			apiKey: "test",
+			apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
 			container: mapElement,
 			address: "Maringá PR",
 			onChange(value) {

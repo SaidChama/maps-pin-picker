@@ -33,6 +33,7 @@ export async function createMapPinPicker(
 	const map = new google.maps.Map(options.container, {
 		center: coords,
 		zoom: options.zoom ?? 17,
+		mapTypeId: options.mapType ?? "hybrid",
 	});
 
 	const marker = new google.maps.Marker({

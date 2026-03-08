@@ -9,6 +9,7 @@ export type CreateMapPinPickerOptions = {
 	container: HTMLElement;
 	address: string;
 	zoom?: number;
+	mapType?: "roadmap" | "satellite" | "hybrid" | "terrain";
 	initialLat?: number;
 	initialLng?: number;
 	onChange?: (value: MapPinPickerValue) => void;
