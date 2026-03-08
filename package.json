@@ -1,14 +1,34 @@
 {
   "name": "maps-pin-picker",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Lightweight JavaScript library to pick a location on a map and generate latitude, longitude and a shareable Google Maps link.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "maps",
+    "google-maps",
+    "pin-picker",
+    "location-picker",
+    "coordinates",
+    "latitude",
+    "longitude"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.9.3"
   }
