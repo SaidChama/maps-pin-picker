@@ -1,3 +1,9 @@
+import {
+	InvalidOptionsError,
+	MapLoadError,
+	NotImplementedError,
+} from "./errors";
+
 import type {
 	CreateMapPinPickerOptions,
 	MapPinPickerInstance,
@@ -18,5 +24,5 @@ export async function createMapPinPicker(
 ): Promise<MapPinPickerInstance> {
 	void options;
 
-	throw new Error("Not implemented yet");
+	throw new NotImplementedError();
 }
