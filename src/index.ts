@@ -10,6 +10,7 @@ import type {
 	MapPinPickerValue,
 } from "./types";
 import { buildGoogleMapsUrl } from "./utils";
+import { validateOptions } from "./validator";
 
 export type {
 	CreateMapPinPickerOptions,
@@ -22,7 +23,7 @@ export { buildGoogleMapsUrl } from "./utils";
 export async function createMapPinPicker(
 	options: CreateMapPinPickerOptions,
 ): Promise<MapPinPickerInstance> {
-	void options;
+	validateOptions(options);
 
 	throw new NotImplementedError();
 }
